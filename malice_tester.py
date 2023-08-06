@@ -59,7 +59,7 @@ start_time = time.time()
 student_emb = model.encode(student_prompts, show_progress_bar=True)
 logging.debug("--- Encoding time: %s seconds ---" % (time.time() - start_time))
 
-malicious_emb_string = codecs.open('malicious_embeddings.json', 'r', encoding='utf-8').read()
+malicious_emb_string = codecs.open('embeddings/malicious_embeddings.json', 'r', encoding='utf-8').read()
 
 prompts_emb = json.loads(malicious_emb_string)
 malicious_emb = np.array(list(prompts_emb.values()))
