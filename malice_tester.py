@@ -1,6 +1,7 @@
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 import numpy as np
+import pandas as pd
 import csv
 import json
 import codecs
@@ -30,33 +31,55 @@ def cos_sim(sentence1_emb, sentence2_emb):
     cos_sim = cosine_similarity(sentence1_emb, sentence2_emb)
     return np.diag(cos_sim)
 
+def get_is_malicious(cosine, malicious_treshold=0.25):
+    malicious = False
 
-def log_results(cosine, sentence, sentences, injection_treshold=-1.0):
-    header_text = f'Tested prompt: {sentence} - Treshold = {injection_treshold}'
+    for cosine in cosines:
+        if cosine >= malicious_treshold:
+            malicious = True
+            break
+    
+    return malicious
+            
+    
+def log_results(cosine, tested_sentence, sentences, malicious_treshold=-1.0):
+    header_text = f'Tested prompt: {tested_sentence} - Treshold = {malicious_treshold}'
     print(header_text)
     logging.debug(header_text)
     for i, base_prompt in enumerate(sentences):
         match_text = ""
-        if cosine[i] >= injection_treshold:
+        if cosine[i] >= malicious_treshold:
             match_text = "(MATCH)"
             print(f'{match_text}Similarity: {cosine[i]} - {base_prompt}')
         logging.debug(f'{match_text}Similarity: {cosine[i]} - {base_prompt}')
     print()
     logging.debug("")
 
-student_prompts = []
+def find_best_treshold(iterations):
+    treshold = 0.0
+    best_results = 0
+    i = 0
+    while i < iterations:
+        
+        i = i + 1
 
-with open('data/tested_prompts.csv', encoding='UTF-8') as csvfile:
-    spamreader = csv.reader(csvfile)
-    for row in spamreader:
-        student_prompts.append(row[0])
+    return treshold
+
+tested_prompts = pd.read_csv('data/tested_prompts.csv', names=['prompt', 'malicious'], header=None)
+
+tested_prompts_list = tested_prompts['prompt'].tolist()
+
+# with open('data/tested_prompts.csv', encoding='UTF-8') as csvfile:
+#     spamreader = csv.reader(csvfile)
+#     for row in spamreader:
+#         tested_prompts.append(row[0])
 
 # Load the pre-trained model
 model = SentenceTransformer('distiluse-base-multilingual-cased-v1')
 
 # Generate embeddings
 start_time = time.time()
-student_emb = model.encode(student_prompts, show_progress_bar=True)
+tested_emb = model.encode(tested_prompts_list, show_progress_bar=True)
 logging.debug("--- Encoding time: %s seconds ---" % (time.time() - start_time))
 
 malicious_emb_string = codecs.open('embeddings/malicious_embeddings.json', 'r', encoding='utf-8').read()
@@ -66,14 +89,15 @@ malicious_emb = np.array(list(prompts_emb.values()))
 malicious_sentences = np.array(list(prompts_emb.keys()))
 
 start_time = time.time()
-for i, value in enumerate(student_emb):
-    repeated_student_emb = []
+for i, value in enumerate(tested_emb):
+    repeated_tested_emb = []
     for j in malicious_emb:
-        repeated_student_emb.append(student_emb[i])
+        repeated_tested_emb.append(tested_emb[i])
 
-    cosine = cos_sim(repeated_student_emb, malicious_emb)
+    cosines = cos_sim(repeated_tested_emb, malicious_emb)
 
-    log_results(cosine, student_prompts[i], malicious_sentences, injection_treshold=0.23)
+    print(tested_prompts_list[i], get_is_malicious(cosines, malicious_treshold=0.35))
+    # log_results(cosines, tested_prompts_list[i], malicious_sentences, malicious_treshold=0.25)
 
 logging.debug("--- Checking time: %s seconds ---" % (time.time() - start_time))
 

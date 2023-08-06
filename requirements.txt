@@ -1,2 +1,4 @@
 sklearn
 sentence-transformers
+pandas
+numpy
