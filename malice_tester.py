@@ -65,7 +65,7 @@ def find_best_treshold(iterations):
 
     return treshold
 
-tested_prompts = pd.read_csv('data/tested_prompts.csv', names=['prompt', 'malicious'], header=None)
+tested_prompts = pd.read_csv('data/no_malicious_prompts.csv', names=['prompt', 'malicious'], header=None)
 
 tested_prompts_list = tested_prompts['prompt'].tolist()
 
@@ -96,7 +96,9 @@ for i, value in enumerate(tested_emb):
 
     cosines = cos_sim(repeated_tested_emb, malicious_emb)
 
-    print(tested_prompts_list[i], get_is_malicious(cosines, malicious_treshold=0.35))
+    malicious = get_is_malicious(cosines, malicious_treshold=0.25)
+    if malicious == True:
+        print(tested_prompts_list[i], malicious)
     # log_results(cosines, tested_prompts_list[i], malicious_sentences, malicious_treshold=0.25)
 
 logging.debug("--- Checking time: %s seconds ---" % (time.time() - start_time))
