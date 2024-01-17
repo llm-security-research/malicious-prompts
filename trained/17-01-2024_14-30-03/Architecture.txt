@@ -1,0 +1,21 @@
+SiameseNetwork(
+  (embedding): Sequential(
+    (0): Linear(in_features=384, out_features=512, bias=True)
+    (1): ReLU(inplace=True)
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): ReLU(inplace=True)
+    (4): Linear(in_features=256, out_features=128, bias=True)
+  )
+)
+Execution time: 6 minutes and 3.46 seconds
+Number of epochs: 50
+Embedding dimension: 128
+Optimizer: Adam
+Learning rate: 0.0001
+Loss function: TripletMarginLoss
+Margin: 0.3
+Batch size: 1800
+Number of workers: 4
+Dataset: data/processed/maleficent.csv
+Number of classes: 3
+Number of samples: 1496
