@@ -216,7 +216,7 @@ if __name__ == "__main__":
     model = SiameseNetwork(128)  # replace with your actual model class
 
     # Load the state dictionary from the .pth file
-    state_dict = torch.load(MODEL)
+    state_dict = torch.load("best_model/state.pth")
 
     # Load the state dictionary into the model
     model.load_state_dict(state_dict)
