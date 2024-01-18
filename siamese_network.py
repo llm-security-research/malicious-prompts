@@ -3,7 +3,7 @@ import torch.nn as nn
 class SiameseNetwork(nn.Module):
     def __init__(self, embedding_dim):
         super(SiameseNetwork, self).__init__()
-
+    
         self.embedding = nn.Sequential(
             nn.Linear(384, 512),
             nn.ReLU(inplace=True), 
