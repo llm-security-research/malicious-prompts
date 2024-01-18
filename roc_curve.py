@@ -9,7 +9,6 @@ from siamese_network import SiameseNetwork
 import csv
 import numpy as np
 import random
-from constants import *
 
 from collections import Counter
 

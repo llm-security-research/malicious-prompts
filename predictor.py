@@ -1,4 +1,3 @@
-import sys
 import pandas as pd
 import numpy as np
 import roc_curve
@@ -23,7 +22,7 @@ def predict(prompt):
     least_category = "null"
 
     for index, row in triplet_df.iterrows():
-        dist = np.linalg.norm(tested_prompt_predicted - np.asarray(row['embedding']))
+        dist = np.linalg.norm(np.asarray(tested_prompt_predicted) - np.asarray(row['embedding']))
         if least_distance > dist:
             least_distance = dist
             least_category = row['category']
@@ -34,18 +33,13 @@ def predict(prompt):
 
 if __name__ == "__main__":
 
-    print("Loading...")
+    print("Loading siamese dataset...")
 
-    INPUT_FILE = "data/processed/maleficent.csv"
-    df = pd.read_csv(INPUT_FILE)
+    triplet_df = pd.read_csv("data/processed/maleficent_siamese.csv", converters={'embedding': pd.eval})
+    print(triplet_df.head())
 
-    
-    for embedding in df['embedding']:
-        temp = [float(x.strip(' []')) for x in embedding.split(',')]
-        embeddings.append(temp)
-    
-    for category in df['category']:
-        categories.append(category)
+    for index, row in triplet_df.iterrows():
+        print(type(row['embedding']))
 
     print("Loading malicious prompt model...")
     malicious_model = torch.load("./trained/17-01-2024_14-30-03/model.pth")
@@ -57,9 +51,6 @@ if __name__ == "__main__":
     for embedding in embeddings:
         temp = roc_curve.predict(malicious_model, torch.Tensor(embedding))
         triplet_embeddings.append(temp)
-
-    triplet_df = pd.DataFrame({'category': categories, 'embedding': triplet_embeddings})
-
 
     print("Insert prompt to be tested (-1 to exit):")
     while True:
