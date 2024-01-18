@@ -1,5 +1,6 @@
-sklearn
-sentence-transformers
-pandas
-numpy
-matplotlib
+sklearn==0.0.post1
+sentence-transformers==2.2.2
+pandas==2.0.1
+numpy==1.25.2
+matplotlib==3.7.1
+torch==2.0.0
