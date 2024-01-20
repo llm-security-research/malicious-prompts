@@ -19,3 +19,5 @@ Number of workers: 4
 Dataset: data/processed/maleficent.csv
 Number of classes: 3
 Number of samples: 1047
+Test size: 0.3
+Data split seed: 42
