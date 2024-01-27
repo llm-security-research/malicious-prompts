@@ -22,9 +22,8 @@
 
 ## Misc
 
-- [] Find a name for the "siamese network embeddings"
-    - [X] Find a name for the model family
-        - Maleficent models
-    - [X] Find name for datasets generated
-        - Maleficent dataset
-    - [] Find a name for the final model
+- [X] Find a name for the model family
+    - Maleficent models
+- [X] Find name for generated datasets
+    - Maleficent dataset
+- [] Find a name for the final model
