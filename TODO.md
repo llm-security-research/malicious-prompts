@@ -1,15 +1,30 @@
 # TODO :smirk:
 
+## Datasets and training
+
 [X] Refactor and document siamese networks 
 ~~[X] Balance kmeans dataset~~ not the focus for a kmeans clustering problem
-[X] Balance siamese
+[X] Balance dataset for siamese training
 [X] Split train test
-[X] Plot AUC for siamese
+[X] Dataset with siamese network embeddings
+    [X] Save dataset
+    [X] Load dataset in interactive predictor
+
+## Evaluation
+
+[X] Plot AUC for siamese network
+[] Plot clusters with PCA for siamese network evaluation
+[] Plot clusters with PCA 
 [] Plot confusion matrix
     [] Siamese CFM
     [] Siamese Split CFM
     [] Siamese Split Balanced CFM
-[X] Dataset with siamese network embeddings
-    [X] Save dataset
-    [X] Load dataset in interactive predictor
+
+## Misc
+
 [] Find a name for the "siamese network embeddings"
+    [X] Find a name for the model family
+        - Maleficent models
+    [X] Find name for datasets generated
+        - Maleficent dataset
+    [] Find a name for the final model
