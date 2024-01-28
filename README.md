@@ -14,7 +14,6 @@
 
 - [X] Plot AUC for siamese network
 - [] Plot clusters with PCA for siamese network evaluation
-- [] Plot clusters with PCA 
 - [] Plot confusion matrix
     - [] Siamese CFM
     - [] Siamese Split CFM
