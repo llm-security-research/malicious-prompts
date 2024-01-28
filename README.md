@@ -21,7 +21,10 @@
 ## Misc
 
 - [X] Find a name for the model family
-    - Maleficent models
+    - malignant models
 - [X] Find name for generated datasets
-    - Maleficent dataset
+    - [X] Prompts and embeddings collected from initial data
+        - "malignant"
+    - [X] Data generated with the siamese network
+        - "malignant_siamese"
 - [] Find a name for the final model

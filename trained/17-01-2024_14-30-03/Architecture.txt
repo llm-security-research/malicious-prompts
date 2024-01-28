@@ -16,6 +16,6 @@ Loss function: TripletMarginLoss
 Margin: 0.3
 Batch size: 1800
 Number of workers: 4
-Dataset: data/processed/maleficent.csv
+Dataset: data/processed/malignant.csv
 Number of classes: 3
 Number of samples: 1496

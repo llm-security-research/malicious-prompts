@@ -45,7 +45,7 @@ def read_csv(path_csv):
     #     csv_data = {k: v for k, v in csv_data.items() if len(v) > 1}
     #     # print(len(csv_data))
     # return csv_data]
-    INPUT_FILE = "data/processed/maleficent.csv"
+    INPUT_FILE = "data/processed/malignant.csv"
     df = pd.read_csv(INPUT_FILE)
     df.head()
 

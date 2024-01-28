@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
     print("Loading siamese dataset...")
 
-    triplet_df = pd.read_csv("data/processed/maleficent_siamese.csv", converters={'embedding': pd.eval})
+    triplet_df = pd.read_csv("data/processed/malignant_siamese.csv", converters={'embedding': pd.eval})
     print(triplet_df.head())
 
     for index, row in triplet_df.iterrows():
