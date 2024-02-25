@@ -22,8 +22,15 @@ If you wish to train your own models in a similar fashion or replicate this rese
 
 # Citation
 
-If you find our work useful, please [cite our paper]: 
+If you find our work useful, please [cite our paper](https://github.com/llm-security-research/malicious-prompts): 
 
 ```
-@inproceedings
+@misc{glober2024malignant,
+      title={Malignant and PromptSentinel - Solution for Jailbreak Attacks Against Large Language Models}, 
+      author={Osmary Camila Bortoncello Glober and Vinicius Krieger Granemann},
+      year={2024},
+      eprint={},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI}
+}
 ```
