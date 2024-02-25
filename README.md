@@ -1,30 +1,29 @@
-# TODO :smirk:
+# Malignant and PromptSentinel - Solution for Jailbreak Attacks Against Large Language Models
 
-## Datasets and training
+## Authors
 
-- [X] Refactor and document siamese networks 
-- ~~[X] Balance kmeans dataset~~ not the focus for a kmeans clustering problem
-- [X] Balance dataset for siamese training
-- [X] Split train test
-- [X] Dataset with siamese network embeddings
-    - [X] Save dataset
-    - [X] Load dataset in interactive predictor
+[Vinicius Krieger Granemann](https://github.com/Hermitao)
 
-## Evaluation
+[Osmary Camila Bortoncello Glober](https://github.com/marycamila184)
 
-- [X] Plot AUC for siamese network
-- [] Plot clusters with PCA for siamese network evaluation
-- [X] Plot confusion matrix
-    - [X] Siamese Split CFM
-    - [X] Siamese Split Balanced CFM
+# Downloads
 
-## Misc
+## Downloading the Malignant dataset
 
-- [X] Find a name for the model family
-    - malignant models
-- [X] Find name for generated datasets
-    - [X] Prompts and embeddings collected from initial data
-        - "malignant"
-    - [X] Data generated with the siamese network
-        - "malignant_siamese"
-- [] Find a name for the final model
+All versions of the Malignant dataset are located in the Malignant directory.
+
+## Downloading the PromptSentinel models
+
+All trained models cited in the paper are located in PromptSentinel/models.
+
+# Training
+
+If you wish to train your own models in a similar fashion or replicate this research, you can follow these steps:
+
+# Citation
+
+If you find our work useful, please [cite our paper]: 
+
+```
+@inproceedings
+```
