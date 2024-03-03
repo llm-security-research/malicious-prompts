@@ -10,8 +10,6 @@ class PredictionPipeline:
     def __init__(self, modelaa):
         self.m_model = modelaa
 
-        print("loaded model")
-
         def convert_to_list(x):
             return ast.literal_eval(x)
 
@@ -19,7 +17,6 @@ class PredictionPipeline:
 
     def predict(self, text):
 
-        print("model")
         paraphrase = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
         tested = paraphrase.encode(text)
         tested_embedding = []
@@ -43,7 +40,6 @@ class PredictionPipeline:
             if least_distance > dist:
                 least_distance = dist
                 least_category = self.df_malignant['category'][i]
-                print(least_category)
             i = i+1
 
             preds[0] = least_category
