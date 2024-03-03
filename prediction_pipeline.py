@@ -34,7 +34,7 @@ class PredictionPipeline:
         for embedding in triplet_embeddings:
             classified_embedding = []
             with torch.no_grad():
-                classified_embedding = model.forward_one(torch.Tensor(embedding).cuda()).tolist()
+                classified_embedding = self.model.forward_one(torch.Tensor(embedding).cuda()).tolist()
 
             dist = np.linalg.norm(np.asarray(classified_embedding) - np.asarray(tested_embedding))
             if least_distance > dist:
