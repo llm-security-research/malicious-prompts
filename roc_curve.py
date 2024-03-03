@@ -105,7 +105,10 @@ def get_item(data_dict, n, reload_triplets):
 def predict(model, input_tensor):
     # Make a prediction using the model
     with torch.no_grad():
-        return model.forward_one(input_tensor.cuda()).tolist()
+        if torch.cuda.is_available():
+            return model.forward_one(input_tensor.cuda()).tolist()
+        else:
+            return model.forward_one(input_tensor).tolist()
 
 
 def euclidean_distance(feature_1, feature_2):

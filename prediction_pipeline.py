@@ -20,7 +20,10 @@ class PredictionPipeline:
         tested = paraphrase.encode(text)
         tested_embedding = []
         with torch.no_grad():
-            tested_embedding = self.m_model.forward_one(torch.Tensor(tested).cuda()).tolist()
+            if torch.cuda.is_available():
+                tested_embedding = self.m_model.forward_one(torch.Tensor(tested).cuda()).tolist()
+            else:
+                tested_embedding = self.m_model.forward_one(torch.Tensor(tested)).tolist()
             
         preds = ['none']
 
@@ -33,7 +36,10 @@ class PredictionPipeline:
         for embedding in triplet_embeddings:
             classified_embedding = []
             with torch.no_grad():
-                classified_embedding = self.m_model.forward_one(torch.Tensor(embedding).cuda()).tolist()
+                if torch.cuda.is_available():
+                    classified_embedding = self.m_model.forward_one(torch.Tensor(embedding).cuda()).tolist()
+                else:
+                    classified_embedding = self.m_model.forward_one(torch.Tensor(embedding)).tolist()
 
             dist = np.linalg.norm(np.asarray(classified_embedding) - np.asarray(tested_embedding))
             if least_distance > dist:
