@@ -1,4 +1,3 @@
-
 from sentence_transformers import SentenceTransformer
 import torch
 import pandas as pd
@@ -8,8 +7,10 @@ import numpy as np
     
 class PredictionPipeline:
 
-    def __init__(self, model):
-        self.paraphrase = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+    def __init__(self, modelaa):
+        self.m_model = modelaa
+
+        print("loaded model")
 
         def convert_to_list(x):
             return ast.literal_eval(x)
@@ -17,11 +18,13 @@ class PredictionPipeline:
         self.df_malignant = pd.read_csv(os.path.join(os.path.dirname(__file__), 'Malignant/malignant.csv'), converters={'embedding': convert_to_list})
 
     def predict(self, text):
-        tested = self.paraphrase.encode(text)
-        
+
+        print("model")
+        paraphrase = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+        tested = paraphrase.encode(text)
         tested_embedding = []
         with torch.no_grad():
-            tested_embedding = self.model.forward_one(torch.Tensor(tested).cuda()).tolist()
+            tested_embedding = self.m_model.forward_one(torch.Tensor(tested).cuda()).tolist()
             
         preds = ['none']
 
@@ -34,7 +37,7 @@ class PredictionPipeline:
         for embedding in triplet_embeddings:
             classified_embedding = []
             with torch.no_grad():
-                classified_embedding = self.model.forward_one(torch.Tensor(embedding).cuda()).tolist()
+                classified_embedding = self.m_model.forward_one(torch.Tensor(embedding).cuda()).tolist()
 
             dist = np.linalg.norm(np.asarray(classified_embedding) - np.asarray(tested_embedding))
             if least_distance > dist:
