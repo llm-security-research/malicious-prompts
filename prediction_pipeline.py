@@ -16,7 +16,7 @@ class PredictionPipeline:
         self.df_malignant = pd.read_csv(os.path.join(os.path.dirname(__file__), 'Malignant/malignant.csv'), converters={'embedding': convert_to_list})
 
     def predict(self, text):
-        paraphrase = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+        paraphrase = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2', device=('cuda' if torch.cuda.is_available() else 'cpu'))
         tested = paraphrase.encode(text)
         tested_embedding = []
         with torch.no_grad():
