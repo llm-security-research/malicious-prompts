@@ -1,6 +1,6 @@
 import torch
 import os
-dependencies = ['torch', 'sentence-transformers']
+dependencies = ['torch']
 
 from prediction_pipeline import *
 
