@@ -14,20 +14,20 @@ All versions of the Malignant dataset are located in the Malignant directory.
 
 ## Downloading the PromptSentinel models
 
-All trained models cited in the paper are located in PromptSentinel/models.
+All trained models cited in the paper can be used through PyTorch Hub. The PyTorch model files are also located in PromptSentinel/.
 
 # Training
 
-If you wish to train your own models in a similar fashion or replicate this research, you can follow these steps:
+If you wish to train your own models in a similar fashion or replicate this research, you can follow thes steps:
 
 # Citation
 
 If you find our work useful, please [cite our paper](https://github.com/llm-security-research/malicious-prompts): 
 
 ```
-@misc{glober2024malignant,
+@misc{krieger2024malignant,
       title={Malignant and PromptSentinel - Solution for Jailbreak Attacks Against Large Language Models}, 
-      author={Osmary Camila Bortoncello Glober and Vinicius Krieger Granemann},
+      author={Vinicius Krieger Graneman and Osmary Camila Bortoncello Glober},
       year={2024},
       eprint={},
       archivePrefix={arXiv},
