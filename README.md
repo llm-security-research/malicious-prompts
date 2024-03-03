@@ -16,7 +16,13 @@ All versions of the Malignant dataset are located in the Malignant directory.
 
 ### Ready-to-use prediction pipeline
 
-To use our complete prediction pipeline, use the following:
+To use our complete prediction pipeline, PyTorch and SentenceTransformers are needed. 
+
+```bash
+$ pip install torch sentence-transformers
+```
+
+Pipeline usage:
 ```python
 import torch
 
