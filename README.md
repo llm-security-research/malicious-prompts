@@ -16,6 +16,18 @@ All versions of the Malignant dataset are located in the Malignant directory.
 
 All trained models cited in the paper can be used through PyTorch Hub. The PyTorch model files are also located in PromptSentinel/.
 
+```python
+model_unbalanced = torch.hub.load('llm-security-research/malicious-prompts', 'promptsentinel_unbalanced_v1', trust_repo=True)
+```
+
+```python
+model_balanced = torch.hub.load('llm-security-research/malicious-prompts', 'promptsentinel_balanced_v1', trust_repo=True)
+```
+
+```python
+model_unbalanced_paraphrase = torch.hub.load('llm-security-research/malicious-prompts', 'promptsentinel_unbalanced_paraphrase_v1', trust_repo=True)
+```
+
 # Training
 
 If you wish to train your own models in a similar fashion or replicate this research, you can follow thes steps:
