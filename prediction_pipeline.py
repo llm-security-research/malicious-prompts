@@ -16,7 +16,6 @@ class PredictionPipeline:
         self.df_malignant = pd.read_csv(os.path.join(os.path.dirname(__file__), 'Malignant/malignant.csv'), converters={'embedding': convert_to_list})
 
     def predict(self, text):
-
         paraphrase = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
         tested = paraphrase.encode(text)
         tested_embedding = []

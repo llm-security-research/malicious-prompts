@@ -24,7 +24,7 @@ def promptsentinel_unbalanced_paraphrase_v1(*args, **kwargs):
 
 def prediction_pipeline(*args, **kwargs):
     model_path = os.path.join(os.path.dirname(__file__), 'PromptSentinel/PromptSentinel-Unbalanced-v1/model.pth')
-    model = torch.load(model_path)
+    model = torch.load(model_path) if torch.cuda.is_available() else torch.load(model_path, map_location=torch.device)
 
     pipeline = PredictionPipeline(model)
 
