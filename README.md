@@ -30,6 +30,19 @@ prediction_pipeline = torch.hub.load('llm-security-research/malicious-prompts', 
 prediction_pipeline.predict("{text to be predicted}")
 ```
 
+If you want to use a specific model (default is "PromptSentinel-Unbalanced-Paraphrase-v1"), pass it as an optional argument to torch.hub.load _*args_. The options are:
+<ol>
+      <li>PromptSentinel-Unbalanced-v1</li>
+      <li>PromptSentinel-Balanced-v1</li>
+      <li>PromptSentinel-Unbalanced-Paraphrase-v1</li>
+</ol>
+
+```python
+prediction_pipeline_1 = torch.hub.load('llm-security-research/malicious-prompts', 'prediction_pipeline', "PromptSentinel-Unbalanced-v1", trust_repo=True)
+prediction_pipeline_2 = torch.hub.load('llm-security-research/malicious-prompts', 'prediction_pipeline', "PromptSentinel-Balanced-v1", trust_repo=True)
+prediction_pipeline_3 = torch.hub.load('llm-security-research/malicious-prompts', 'prediction_pipeline', "PromptSentinel-Unbalanced-Paraphrase-v1", trust_repo=True)
+```
+
 Example usage:
 ```python
 import torch
