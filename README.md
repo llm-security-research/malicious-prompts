@@ -94,6 +94,6 @@ If you find our work useful, please [cite our paper](https://github.com/llm-secu
       year={2024},
       eprint={},
       archivePrefix={arXiv},
-      primaryClass={cs.AI}
+      primaryClass={cs.CL}
 }
 ```

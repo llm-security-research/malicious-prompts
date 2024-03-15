@@ -33,7 +33,7 @@ def prediction_pipeline(*args, **kwargs):
 
     print("Creating prediction pipeline...")
     pipeline = PredictionPipeline(model)
-    print('Pipeline created successfully. Use PredictionPipeline.predict("{text}") to classify prompts.')
+    print('Pipeline created successfully. Use PredictionPipeline.predict(text) to classify prompts.')
 
     return pipeline
 
