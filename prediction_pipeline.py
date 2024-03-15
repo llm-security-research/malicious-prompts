@@ -7,8 +7,9 @@ import numpy as np
     
 class PredictionPipeline:
 
-    def __init__(self, modelaa):
-        self.m_model = modelaa
+    def __init__(self, model):
+        self.m_model = model
+        self.paraphrase = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2', device=('cuda' if torch.cuda.is_available() else 'cpu'))
 
         def convert_to_list(x):
             return ast.literal_eval(x)
@@ -16,8 +17,7 @@ class PredictionPipeline:
         self.df_malignant = pd.read_csv(os.path.join(os.path.dirname(__file__), 'Malignant/malignant.csv'), converters={'embedding': convert_to_list})
 
     def predict(self, text):
-        paraphrase = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2', device=('cuda' if torch.cuda.is_available() else 'cpu'))
-        tested = paraphrase.encode(text)
+        tested = self.paraphrase.encode(text)
         tested_embedding = []
         with torch.no_grad():
             if torch.cuda.is_available():
@@ -50,5 +50,19 @@ class PredictionPipeline:
             preds[0] = least_category
         
         return preds[0]
+    
+    def get_embedding_from_text(self, text):
+        tested = self.paraphrase.encode(text)
+        tested_embedding = []
+        with torch.no_grad():
+            if torch.cuda.is_available():
+                tested_embedding = self.m_model.forward_one(torch.Tensor(tested).cuda()).tolist()
+            else:
+                tested_embedding = self.m_model.forward_one(torch.Tensor(tested)).tolist()
+
+        return tested_embedding
+
+        
+
 
 
