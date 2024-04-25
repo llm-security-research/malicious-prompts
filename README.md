@@ -85,7 +85,7 @@ If you wish to train your own models in a similar fashion or replicate this rese
 
 # Citation
 
-If you find our work useful, please [cite our paper](https://https://vinbinary.xyz/malignant_and_promptsentinel.pdf): 
+If you find our work useful, please [cite our paper](https://vinbinary.xyz/malignant_and_promptsentinel.pdf): 
 
 ```
 @misc{kriegergranemann2024,
@@ -94,6 +94,6 @@ If you find our work useful, please [cite our paper](https://https://vinbinary.x
     year = {2024},
     month = {April 25},
     howpublished = {vinbinary},
-    url = {https://vinbinary.xyz/Malignant_and_PromptSentinel.pdf}
+    url = {https://vinbinary.xyz/malignant_and_promptsentinel.pdf}
 }
 ```
