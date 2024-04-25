@@ -85,15 +85,15 @@ If you wish to train your own models in a similar fashion or replicate this rese
 
 # Citation
 
-If you find our work useful, please [cite our paper](https://github.com/llm-security-research/malicious-prompts): 
+If you find our work useful, please [cite our paper](https://https://vinbinary.xyz/malignant_and_promptsentinel.pdf): 
 
 ```
-@misc{krieger2024malignant,
-      title={Malignant and PromptSentinel - Solution for Jailbreak Attacks Against Large Language Models}, 
-      author={Vinicius Krieger Graneman and Osmary Camila Bortoncello Glober},
-      year={2024},
-      eprint={},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@misc{kriegergranemann2024,
+    author = {Krieger Granemann, Vinicius and Bortoncello Glober, Osmary C.},
+    title = {Defending Language Models: Malignant Dataset and PromptSentinel Model for Robust Protection Against Jailbreak Attacks},
+    year = {2024},
+    month = {April 25},
+    howpublished = {vinbinary},
+    url = {https://vinbinary.xyz/Malignant_and_PromptSentinel.pdf}
 }
 ```
