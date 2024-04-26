@@ -6,6 +6,9 @@
 
 [Osmary Camila Bortoncello Glober](https://github.com/marycamila184)
 
+# Paper
+[Accompanying preprint](https://vinbinary.xyz/malignant_and_promptsentinel.pdf)
+
 # Downloads
 
 ## Downloading the Malignant dataset
