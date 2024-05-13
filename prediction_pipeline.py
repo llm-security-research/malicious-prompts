@@ -4,12 +4,19 @@ import pandas as pd
 import ast
 import os
 import numpy as np
+import time
     
 class PredictionPipeline:
 
     def __init__(self, model):
+        start = time.time()
         self.m_model = model
+        end = time.time()
+        print(f'{model} loading time: {end-start}')
+        start = time.time()
         self.paraphrase = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2', device=('cuda' if torch.cuda.is_available() else 'cpu'))
+        end = time.time()
+        print(f'paraphrase-multilingual-MiniLM-L12-v2 loading time: {end-start}')
 
         def convert_to_list(x):
             return ast.literal_eval(x)
@@ -17,7 +24,12 @@ class PredictionPipeline:
         self.df_malignant = pd.read_csv(os.path.join(os.path.dirname(__file__), 'Malignant/malignant.csv'), converters={'embedding': convert_to_list})
 
     def predict(self, text):
+        start = time.time()
         tested = self.paraphrase.encode(text)
+        end = time.time()
+        print(f'SentenceTransformer encoding time: {end-start}')
+
+        start = time.time()
         tested_embedding = []
         with torch.no_grad():
             if torch.cuda.is_available():
@@ -49,6 +61,8 @@ class PredictionPipeline:
 
             preds[0] = least_category
         
+        end = time.time()
+        print(f'PromptSentinel prediction time: {end-start}')
         return preds[0]
     
     def get_embedding_from_text(self, text):
