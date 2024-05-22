@@ -13,7 +13,7 @@
 
 ## Downloading the Malignant dataset
 
-All versions of the Malignant dataset are located in the Malignant directory.
+All versions of the Malignant dataset are located in the Malignant directory, but also available on [Kaggle](https://www.kaggle.com/datasets/marycamilainfo/prompt-injection-malignant/).
 
 ## Downloading the PromptSentinel models
 
@@ -21,7 +21,7 @@ All versions of the Malignant dataset are located in the Malignant directory.
 
 To use our complete prediction pipeline, PyTorch, SentenceTransformers, Pandas and NumPy are needed. 
 
-```bash
+```bash.
 $ pip install torch sentence-transformers pandas numpy
 ```
 
