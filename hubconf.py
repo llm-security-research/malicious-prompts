@@ -40,4 +40,3 @@ def prediction_pipeline(*args, **kwargs):
 
 
 
-

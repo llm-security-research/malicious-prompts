@@ -14,7 +14,7 @@ To use our complete prediction pipeline, PyTorch, SentenceTransformers, Pandas a
 $ pip install torch sentence-transformers pandas numpy
 ```
 
-(Offline) pipeline usage:
+(Offline) pipeline usage (first time needs internet connection to download SentenceTransformers models):
 ```python
 import hubconf
 
