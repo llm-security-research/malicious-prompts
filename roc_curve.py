@@ -215,7 +215,7 @@ def get_model_size(model):
         
 if __name__ == "__main__":
     # Initialize the model
-    model = SiameseNetwork(128)  # replace with your actual model class
+    model = SiameseNetwork(128)
 
     # Load the state dictionary from the .pth file
     state_dict = torch.load("best_model/state.pth")

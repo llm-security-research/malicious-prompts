@@ -58,7 +58,7 @@ class PredictionPipeline:
                 least_distance = dist
                 least_category = self.df_malignant['category'][i]
             i = i+1
- 
+
             preds[0] = least_category
         
         end = time.time()
